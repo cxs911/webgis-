@@ -1,0 +1,67 @@
+/* ============================================
+   金陵旧巷 - 全局样式
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--color-ink);
+  background-color: var(--color-paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+/* 滚动条 - 民国铜色 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-paper-dark);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brick);
+  border-radius: 3px;
+  border: 1px solid var(--color-wood-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-wood);
+}
+
+/* 选中文字 - 胭脂红 */
+::selection {
+  background: rgba(194, 59, 59, 0.2);
+  color: var(--color-ink);
+}
+
+/* 链接着色 */
+a {
+  color: var(--color-rouge);
+  text-decoration: none;
+  transition: var(--transition-ink);
+}
+
+a:hover {
+  color: var(--color-rouge-dark);
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-underline-offset: 3px;
+}

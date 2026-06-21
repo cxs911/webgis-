@@ -1,0 +1,249 @@
+/* ============================================
+   金陵旧巷 - 纹理、图案与动画体系
+   ============================================ */
+
+/* === 宣纸纹理背景 === */
+.paper-texture {
+  background-color: var(--color-paper);
+  background-image:
+    var(--texture-paper),
+    var(--texture-newsprint);
+}
+
+/* === 旧报纸纹理 === */
+.newsprint-texture {
+  background-color: var(--color-paper-news);
+  background-image:
+    var(--texture-paper),
+    var(--texture-newsprint);
+}
+
+/* === 牛皮纸纹理 === */
+.kraft-texture {
+  background-color: var(--color-kraft);
+  background-image: var(--texture-paper);
+}
+
+/* === 青砖墙面纹理 === */
+.brick-texture {
+  background-color: var(--color-gray-brick);
+  background-image:
+    var(--texture-paper),
+    var(--texture-brick);
+}
+
+/* === 木纹纹理 === */
+.wood-texture {
+  background-color: var(--color-wood);
+  background-image:
+    var(--texture-wood-grain),
+    var(--texture-paper);
+}
+
+/* === 水墨晕染动画 === */
+@keyframes ink-spread {
+  0% {
+    clip-path: circle(0% at 50% 50%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    clip-path: circle(100% at 50% 50%);
+    opacity: 1;
+  }
+}
+
+.ink-reveal {
+  animation: ink-spread 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* === 灯笼摇摆动画 === */
+@keyframes lantern-swing {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.lantern-swing {
+  animation: lantern-swing 3s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+/* === 灯笼闪烁 === */
+@keyframes lantern-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px var(--color-lantern-red));
+    opacity: 0.9;
+  }
+  50% {
+    filter: drop-shadow(0 0 15px var(--color-lantern-gold));
+    opacity: 1;
+  }
+}
+
+.lantern-glow {
+  animation: lantern-glow 2s ease-in-out infinite;
+}
+
+/* === 蒸汽动画 === */
+@keyframes steam-rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.3);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-40px) scale(1.6);
+    opacity: 0;
+  }
+}
+
+.steam {
+  animation: steam-rise 2s ease-out infinite;
+}
+
+/* === 印章盖印动画 === */
+@keyframes seal-stamp {
+  0% {
+    transform: scale(1.5) rotate(-15deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(0.95) rotate(3deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.8;
+  }
+}
+
+.seal-stamp {
+  animation: seal-stamp 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+/* === 宣纸翻页动画 === */
+@keyframes page-flip {
+  0% {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: rotateY(90deg);
+    opacity: 0.3;
+  }
+  100% {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+.page-flip {
+  animation: page-flip 0.8s ease-in-out;
+}
+
+/* === 毛笔描边动画 (悬停按钮边框) === */
+@keyframes brush-stroke {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* === 文字渐显动画 === */
+@keyframes text-reveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.text-reveal {
+  animation: text-reveal 1.5s steps(20, end) forwards;
+}
+
+/* === 黄包车行驶动画 === */
+@keyframes rickshaw-move {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+/* === 浮动动画 (Marker悬停) === */
+@keyframes float-up-down {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.float-hover:hover {
+  animation: float-up-down 0.8s ease-in-out infinite;
+}
+
+/* === 加载画面 === */
+.loading-screen {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-paper);
+  background-image: var(--texture-paper), var(--texture-newsprint);
+}
+
+.loading-steam-container {
+  position: relative;
+  width: 120px;
+  height: 100px;
+  margin-bottom: 30px;
+}
+
+.loading-steam-basket {
+  width: 100px;
+  height: 60px;
+  margin: 40px auto 0;
+  background: linear-gradient(to bottom, var(--color-wood-light), var(--color-wood));
+  border-radius: 50% 50% 10px 10px;
+  border: 3px solid var(--color-wood-dark);
+  position: relative;
+}
+
+.loading-steam-basket::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  right: 10px;
+  height: 10px;
+  background: linear-gradient(to bottom, var(--color-wood-light), var(--color-paper));
+  border-radius: 50%;
+}
+
+.loading-text {
+  font-family: var(--font-title);
+  font-size: 28px;
+  color: var(--color-ink);
+  text-align: center;
+  animation: text-reveal 2s steps(15, end) forwards;
+}
+
+.loading-subtitle {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-ink-light);
+  margin-top: 8px;
+  opacity: 0;
+  animation: text-reveal 2s steps(15, end) 0.5s forwards;
+}

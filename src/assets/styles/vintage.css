@@ -1,0 +1,302 @@
+/* ============================================
+   金陵旧巷 - 民国风组件样式库
+   ============================================ */
+
+/* === 木质招牌按钮 === */
+.vintage-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 18px;
+  font-family: var(--font-title);
+  font-size: 15px;
+  color: var(--color-ink);
+  background: linear-gradient(180deg, var(--color-wood-light), var(--color-wood));
+  border: 2px solid var(--color-wood-dark);
+  border-radius: var(--radius-button);
+  box-shadow:
+    var(--shadow-wood),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: var(--transition-ink);
+  position: relative;
+  overflow: hidden;
+}
+
+.vintage-btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--texture-wood-grain);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.vintage-btn:hover {
+  background: linear-gradient(180deg, var(--color-kraft), var(--color-wood));
+  border-color: var(--color-brick);
+  box-shadow:
+    4px 4px 8px rgba(92,74,30,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+  transform: translateY(-1px);
+}
+
+.vintage-btn:active {
+  transform: translateY(1px);
+  box-shadow: 1px 1px 3px rgba(92,74,30,0.25);
+}
+
+.vintage-btn--primary {
+  background: linear-gradient(180deg, var(--color-rouge), var(--color-rouge-dark));
+  color: var(--color-paper-light);
+  border-color: var(--color-rouge-dark);
+}
+
+.vintage-btn--primary:hover {
+  background: linear-gradient(180deg, var(--color-lantern-red), var(--color-rouge));
+}
+
+/* === 铜框输入框 === */
+.vintage-input {
+  width: 100%;
+  padding: 8px 14px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-ink);
+  background: var(--color-paper-light);
+  background-image: var(--texture-paper);
+  border: 2px solid var(--color-brick);
+  border-radius: var(--radius-window);
+  box-shadow: inset 1px 1px 3px rgba(0,0,0,0.08);
+  outline: none;
+  transition: var(--transition-ink);
+}
+
+.vintage-input::placeholder {
+  color: var(--color-ink-wash);
+  font-style: italic;
+}
+
+.vintage-input:focus {
+  border-color: var(--color-rouge);
+  box-shadow:
+    inset 1px 1px 3px rgba(0,0,0,0.08),
+    0 0 8px rgba(194,59,59,0.15);
+}
+
+/* === 民国木窗弹窗 === */
+.vintage-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(44,44,44,0.5);
+  backdrop-filter: blur(2px);
+  animation: ink-spread 0.3s ease-out;
+}
+
+.vintage-modal {
+  position: relative;
+  max-width: 560px;
+  max-height: 80vh;
+  background: var(--color-paper);
+  background-image: var(--texture-paper), var(--texture-newsprint);
+  border: 4px solid var(--color-wood-dark);
+  border-radius: var(--radius-card);
+  box-shadow:
+    var(--shadow-wood),
+    0 8px 32px rgba(0,0,0,0.2);
+  overflow-y: auto;
+  animation: seal-stamp 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.vintage-modal::before {
+  content: '';
+  position: absolute;
+  top: 8px; left: 8px; right: 8px; bottom: 8px;
+  border: 1px solid var(--color-ink-wash);
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.vintage-modal-header {
+  padding: 20px 24px 0;
+  font-family: var(--font-title);
+  font-size: 24px;
+  color: var(--color-ink);
+  text-align: center;
+  position: relative;
+}
+
+.vintage-modal-header::after {
+  content: '';
+  display: block;
+  width: 60%;
+  height: 2px;
+  margin: 12px auto 0;
+  background: linear-gradient(90deg, transparent, var(--color-rouge), transparent);
+  opacity: 0.5;
+}
+
+.vintage-modal-body {
+  padding: 20px 24px;
+}
+
+.vintage-modal-footer {
+  padding: 12px 24px 20px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.vintage-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: center;
+  color: var(--color-ink);
+  background: none;
+  border: 1px solid var(--color-ink-wash);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition-ink);
+}
+
+.vintage-modal-close:hover {
+  color: var(--color-rouge);
+  border-color: var(--color-rouge);
+}
+
+/* === 红色复古印章 === */
+.vintage-seal {
+  display: inline-block;
+  padding: 4px 12px;
+  font-family: var(--font-title);
+  font-size: 14px;
+  color: var(--color-rouge);
+  border: 2px solid var(--color-rouge);
+  border-radius: var(--radius-seal);
+  transform: rotate(-5deg);
+  opacity: 0.85;
+  text-shadow: var(--shadow-seal);
+}
+
+.vintage-seal--checked {
+  background: rgba(194, 59, 59, 0.08);
+}
+
+/* === 旗袍纹样分割线 === */
+.vintage-divider {
+  height: 3px;
+  margin: 16px 0;
+  position: relative;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--color-rouge) 0px,
+      var(--color-rouge) 4px,
+      var(--color-wood) 4px,
+      var(--color-wood) 8px,
+      var(--color-rouge) 8px,
+      var(--color-rouge) 12px
+    );
+  border: none;
+  opacity: 0.5;
+}
+
+.vintage-divider::before {
+  content: '❦';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--color-paper);
+  padding: 0 12px;
+  font-size: 14px;
+  color: var(--color-rouge);
+}
+
+/* === 卡片容器 === */
+.vintage-card {
+  background: var(--color-paper-light);
+  background-image: var(--texture-paper);
+  border: 2px solid var(--color-brick);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-wood);
+  padding: var(--spacing-md);
+  position: relative;
+}
+
+.vintage-card::before {
+  content: '';
+  position: absolute;
+  top: 4px; left: 4px; right: 4px; bottom: 4px;
+  border: 1px solid var(--color-ink-wash);
+  border-radius: 5px;
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+/* === 标签 === */
+.vintage-tag {
+  display: inline-block;
+  padding: 2px 10px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--color-ink);
+  background: var(--color-paper-dark);
+  border: 1px solid var(--color-wood);
+  border-radius: 3px;
+}
+
+.vintage-tag--hot {
+  color: var(--color-paper-light);
+  background: var(--color-rouge);
+  border-color: var(--color-rouge-dark);
+}
+
+/* === 排行榜条目 === */
+.ranking-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-bottom: 1px dashed var(--color-ink-wash);
+}
+
+.ranking-item:last-child {
+  border-bottom: none;
+}
+
+.ranking-num {
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  font-family: var(--font-title);
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--color-paper-light);
+  background: var(--color-wood);
+  border-radius: 50%;
+}
+
+.ranking-num--top1 {
+  background: var(--color-rouge);
+  position: relative;
+}
+
+.ranking-num--top1::after {
+  content: '🌸';
+  position: absolute;
+  top: -12px;
+  right: -8px;
+  font-size: 12px;
+}

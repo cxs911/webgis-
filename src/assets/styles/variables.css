@@ -1,0 +1,64 @@
+/* ============================================
+   金陵旧巷 - 民国手绘动画风 CSS 变量体系
+   ============================================ */
+
+:root {
+  /* === 民国复古色系 === */
+  --color-rouge: #C23B3B;           /* 胭脂红 - 印章/重点/灯笼 */
+  --color-rouge-dark: #8B1A1A;      /* 深胭脂 - 悬停加深 */
+  --color-rouge-light: #E8A0A0;     /* 浅胭脂 - 水墨渐变 */
+  --color-brick: #A0522D;           /* 砖红 - 木结构 */
+  --color-wood: #8B6914;            /* 木棕 - 招牌边框 */
+  --color-wood-dark: #5C4A1E;       /* 深木 - 按钮阴影 */
+  --color-wood-light: #C4A55A;      /* 浅木 - 木纹高光 */
+  --color-gray-brick: #7A7A7A;      /* 青砖灰 - 建筑/边框 */
+  --color-gray-stone: #9E9E9E;      /* 石灰色 */
+  --color-gray-slate: #5C5C5C;      /* 瓦灰 - 屋顶 */
+  --color-ink: #2C2C2C;             /* 墨黑 - 正文 */
+  --color-ink-light: #4A4A4A;       /* 淡墨 - 辅助文字 */
+  --color-ink-wash: #8C8C8C;        /* 水墨淡 - 分割线 */
+  --color-paper: #F5E6C8;           /* 宣纸米黄 - 主要背景 */
+  --color-paper-light: #FAF3E3;     /* 浅宣纸 - 卡片背景 */
+  --color-paper-dark: #E8D5A8;      /* 深宣纸 - 悬停背景 */
+  --color-paper-news: #E8DCC8;      /* 旧报纸 - 看板背景 */
+  --color-kraft: #C4A265;           /* 牛皮纸 */
+  --color-tea: #D4A574;             /* 茶色 */
+  --color-lantern-red: #D44040;     /* 灯笼红 */
+  --color-lantern-gold: #D4A017;    /* 灯笼金 */
+
+  /* === 民国字体体系 === */
+  --font-title: 'STKaiti', 'KaiTi', '楷体', 'Noto Serif SC', serif;          /* 标题书法 */
+  --font-display: 'STSong', 'SimSun', '宋体', 'Noto Serif SC', serif;         /* 展示文字 */
+  --font-body: 'STFangsong', 'FangSong', '仿宋', 'Noto Serif SC', serif;      /* 正文 */
+  --font-ming: 'STSong', 'SimSun', '宋体', serif;                             /* 报刊正文 */
+
+  /* === 民国纹理 === */
+  --texture-paper: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  --texture-newsprint: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 4px);
+  --texture-wood-grain: repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(139,105,20,0.06) 3px, rgba(139,105,20,0.06) 5px);
+  --texture-brick: repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(122,122,122,0.03) 20px, rgba(122,122,122,0.03) 22px);
+
+  /* === 民国阴影 === */
+  --shadow-ink: 2px 2px 4px rgba(44,44,44,0.3);
+  --shadow-wood: 3px 3px 6px rgba(92,74,30,0.25);
+  --shadow-lantern: 0 0 20px rgba(212,64,64,0.3);
+  --shadow-seal: 1px 1px 2px rgba(194,59,59,0.4);
+
+  /* === 圆角体系 (民国窗格圆角) === */
+  --radius-window: 6px;
+  --radius-button: 4px;
+  --radius-seal: 3px;
+  --radius-card: 8px;
+
+  /* === 间距 === */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* === 过渡 === */
+  --transition-ink: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-lantern: all 0.6s ease-in-out;
+  --transition-page: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
