@@ -22,13 +22,10 @@
       <div v-if="!loading" class="main-layout">
         <TopNav
           :districts="districts"
-          :categories="categories"
           :checkin-count="checkinCount"
           :favorite-count="favoriteCount"
           :selected-district="currentFilter.district"
-          :selected-category="currentFilter.category"
           @select-district="onSelectDistrict"
-          @select-category="onSelectCategory"
           @search="onSearch"
           @open-checkins="showCheckinList = true"
           @open-ranking="showHotRanking = true"
@@ -54,7 +51,11 @@
             @open-detail="onOpenDetail"
           />
         </div>
-        <BottomBar />
+        <BottomBar
+          :categories="categories"
+          :selected-category="currentFilter.category"
+          @select-category="onSelectCategory"
+        />
 
         <!-- 店铺详情弹窗 -->
         <ShopDetail

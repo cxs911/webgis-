@@ -262,6 +262,81 @@
   border-color: var(--color-rouge-dark);
 }
 
+/* === 地图美食故事悬停提示 === */
+.vintage-story-tooltip-wrapper {
+  background: var(--color-paper) !important;
+  background-image: var(--texture-paper), var(--texture-newsprint) !important;
+  border: 3px solid var(--color-wood-dark) !important;
+  border-radius: var(--radius-card) !important;
+  box-shadow: var(--shadow-wood) !important;
+  padding: 0 !important;
+  width: auto !important;
+  min-width: 180px !important;
+  max-width: 270px !important;
+  box-sizing: border-box !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow: hidden !important;
+}
+
+.vintage-story-tooltip-wrapper .leaflet-tooltip-content-wrapper {
+  max-width: 264px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.vintage-story-tooltip-wrapper .leaflet-tooltip-content {
+  max-width: 264px !important;
+  width: 100% !important;
+  white-space: normal !important;
+  box-sizing: border-box !important;
+}
+
+.vintage-story-tooltip-wrapper .leaflet-tooltip-tip {
+  background: var(--color-wood-dark) !important;
+  width: 10px !important;
+  height: 10px !important;
+  margin: -6px auto 0;
+}
+
+.vintage-story-tooltip {
+  padding: 10px 12px;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  line-height: 1.6;
+  max-width: 100%;
+  box-sizing: border-box;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+.vintage-story-tooltip .tooltip-title {
+  font-family: var(--font-title);
+  font-size: 16px;
+  color: var(--color-ink);
+  margin-bottom: 4px;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.vintage-story-tooltip .tooltip-signature {
+  font-size: 12px;
+  color: var(--color-rouge);
+  text-align: center;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed var(--color-ink-wash);
+}
+
+.vintage-story-tooltip .tooltip-story {
+  font-size: 13px;
+  text-align: justify;
+  color: var(--color-ink-light);
+  word-break: break-all;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+
 /* === 排行榜条目 === */
 .ranking-item {
   display: flex;

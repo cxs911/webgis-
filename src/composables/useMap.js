@@ -151,7 +151,7 @@ export function useMap() {
   }
 
   // 添加店铺标记
-  function addShopMarkers(shops, checkins = new Set(), onPopupOpen = null) {
+  function addShopMarkers(shops, checkins = new Set(), onShopClick = null) {
     if (!markerCluster.value) return
 
     // 清除旧标记
@@ -165,48 +165,28 @@ export function useMap() {
 
       const marker = L.marker([shop.lat, shop.lng], { icon: markerIcon })
 
-      // 弹窗内容
-      const popupContent = `
-        <div class="shop-popup">
-          <div class="shop-popup-header">
-            <h3>${shop.name}</h3>
-            ${isChecked ? '<span class="vintage-seal vintage-seal--checked">已打卡</span>' : ''}
-          </div>
-          <div class="shop-popup-tags">
-            ${shop.tags.map(t => `<span class="vintage-tag">${t}</span>`).join('')}
-          </div>
-          <div class="vintage-divider"></div>
-          <div class="shop-popup-info">
-            <p>🍽 招牌：${shop.signature}</p>
-            <p>💰 人均：¥${shop.avgPrice}</p>
-            <p>🕐 ${shop.hours}</p>
-            <p>🏛 创立：民国${shop.year - 1911}年 (${shop.year})</p>
-          </div>
-          <div class="shop-popup-actions">
-            <button class="vintage-btn vintage-btn--primary shop-detail-btn" data-id="${shop.id}">
-              查看详情
-            </button>
-          </div>
-        </div>
-      `
-      marker.bindPopup(popupContent, {
-        maxWidth: 340,
-        className: 'vintage-popup'
-      })
-
-      marker.on('popupopen', () => {
-        const detailBtn = document.querySelector(`.shop-detail-btn[data-id="${shop.id}"]`)
-        if (detailBtn && onPopupOpen) {
-          detailBtn.addEventListener('click', () => onPopupOpen(shop))
+      // 悬停提示：显示美食故事（截断过长的文本）
+      const storyShort = shop.story && shop.story.length > 60
+        ? shop.story.slice(0, 60) + '……'
+        : (shop.story || '暂无故事')
+      marker.bindTooltip(
+        `<div class="vintage-story-tooltip">
+          <div class="tooltip-title">${shop.name}</div>
+          <div class="tooltip-signature">${shop.signature}</div>
+          <div class="tooltip-story">${storyShort}</div>
+        </div>`,
+        {
+          permanent: false,
+          direction: 'top',
+          offset: [0, -20],
+          className: 'vintage-story-tooltip-wrapper',
+          opacity: 1
         }
-      })
+      )
 
-      // 悬停动画
-      marker.on('mouseover', function () {
-        this._icon && this._icon.classList.add('float-hover')
-      })
-      marker.on('mouseout', function () {
-        this._icon && this._icon.classList.remove('float-hover')
+      // 点击标记：直接打开店铺详情
+      marker.on('click', () => {
+        if (onShopClick) onShopClick(shop)
       })
 
       markerCluster.value.addLayer(marker)

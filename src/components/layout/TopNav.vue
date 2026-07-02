@@ -14,7 +14,7 @@
       <p class="nav-subtitle">南京老店逛吃打卡地图</p>
     </div>
 
-    <!-- 中间菜单区 -->
+    <!-- 中间菜单区：只保留地点按钮 -->
     <nav class="nav-menu">
       <div class="nav-menu-row">
         <button
@@ -25,17 +25,6 @@
           @click="$emit('select-district', d.id)"
         >
           {{ d.name }}
-        </button>
-      </div>
-      <div class="nav-menu-row">
-        <button
-          v-for="c in categories"
-          :key="c.id"
-          class="vintage-btn nav-btn nav-btn--small"
-          :class="{ 'nav-btn--active': selectedCategory === c.id }"
-          @click="$emit('select-category', c.id)"
-        >
-          <span>{{ c.icon }}</span> {{ c.name }}
         </button>
       </div>
     </nav>
@@ -78,15 +67,13 @@ import { ref } from 'vue'
 
 defineProps({
   districts: Array,
-  categories: Array,
   checkinCount: Number,
   favoriteCount: Number,
-  selectedDistrict: { type: String, default: null },
-  selectedCategory: { type: String, default: null }
+  selectedDistrict: { type: String, default: null }
 })
 
 defineEmits([
-  'select-district', 'select-category',
+  'select-district',
   'search', 'open-checkins', 'open-ranking', 'open-stories'
 ])
 
