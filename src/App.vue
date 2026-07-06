@@ -96,6 +96,12 @@
           @close="showStories = false"
           @go-shop="onGoShop"
         />
+
+        <!-- AI 智能推荐浮窗 -->
+        <AIChatBubble
+          @open-detail="onOpenDetail"
+          @show-on-map="onAIShowOnMap"
+        />
       </div>
     </Transition>
   </div>
@@ -111,6 +117,7 @@ import ShopDetail from './components/map/ShopDetail.vue'
 import CheckinBook from './components/common/CheckinBook.vue'
 import HotRanking from './components/common/HotRanking.vue'
 import FoodStories from './components/common/FoodStories.vue'
+import AIChatBubble from './components/ai/AIChatBubble.vue'
 import { useData } from './composables/useData.js'
 import { useCheckIn } from './composables/useCheckIn.js'
 
@@ -211,6 +218,18 @@ function onGoShop(shop) {
   showHotRanking.value = false
   showStories.value = false
   onOpenDetail(shop)
+}
+
+// AI推荐结果：展示在地图上
+function onAIShowOnMap(shops) {
+  if (mapRef.value && shops.length > 0) {
+    if (shops.length === 1) {
+      onOpenDetail(shops[0])
+    } else {
+      setFilter({ district: null, category: null, keyword: '' })
+      mapRef.value.flyToShops(shops)
+    }
+  }
 }
 
 // 提供给子组件

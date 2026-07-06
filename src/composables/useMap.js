@@ -258,6 +258,21 @@ export function useMap() {
     }
   }
 
+  // AI推荐：适配视野以展示所有结果
+  function fitShopsBounds(shops) {
+    if (!mapInstance.value || !shops || shops.length === 0) return
+    if (shops.length === 1) {
+      flyToShop(shops[0])
+      return
+    }
+    const bounds = shops.map(s => [s.lat, s.lng])
+    mapInstance.value.fitBounds(bounds, {
+      padding: [60, 60],
+      maxZoom: 15,
+      duration: 1.2
+    })
+  }
+
   return {
     mapInstance,
     markerCluster,
@@ -270,6 +285,7 @@ export function useMap() {
     flyToShop,
     drawRoute,
     clearRoute,
-    destroyMap
+    destroyMap,
+    fitShopsBounds
   }
 }

@@ -33,7 +33,8 @@ const emit = defineEmits(['open-detail'])
 
 const {
   initMap, addShopMarkers,
-  flyToDistrict, flyToShop, drawRoute
+  flyToDistrict, flyToShop, drawRoute,
+  fitShopsBounds
 } = useMap()
 
 const mapContainerRef = ref(null)
@@ -49,6 +50,11 @@ function refreshMarkers() {
 function navigateTo(shop) {
   flyToShop(shop)
   drawRoute(null, shop)
+}
+
+// AI推荐结果整体展示
+function flyToShops(shops) {
+  fitShopsBounds(shops)
 }
 
 onMounted(() => {
@@ -68,7 +74,7 @@ watch(() => props.selectedDistrict, (newVal) => {
   }
 })
 
-defineExpose({ refreshMarkers, navigateTo })
+defineExpose({ refreshMarkers, navigateTo, flyToShops })
 </script>
 
 <style scoped>
